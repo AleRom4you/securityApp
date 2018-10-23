@@ -1,0 +1,12 @@
+.portal-burger-menu-icon--toolbar {
+  display: block;
+}
+
+.mdc-toolbar--portal-menu-link {
+  padding: 0 24px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: $mdc-toolbar-row-height;  
+  height: $mdc-toolbar-row-height;  
+}

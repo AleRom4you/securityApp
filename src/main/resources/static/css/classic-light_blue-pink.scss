@@ -1,0 +1,28 @@
+$mdc-typography-font-family: 'Barlow', sans-serif;
+
+$mdc-theme-primary: #03A9F4;
+$mdc-theme-secondary: #FF4081;
+$mdc-theme-background: #fff;
+
+$mdc-theme-primary-dark: #424242;
+$mdc-theme-primary-light: #fff;
+
+// Dark Side Navigation
+$portal-sidenav-fill-color: #424242;
+$portal-sidenav-ink-color: #ffffff;
+
+// Light Side Navigation
+$portal-sidenav-fill-color-light: #ffffff;
+$portal-sidenav-ink-color-light: #424242;
+
+/**
+ * Google MDC
+ */
+@import 'material-components-web/material-components-web';
+
+/**
+ * Font Awesome
+ */
+@import 'font-awesome/scss/font-awesome';
+
+@import 'portal/global';

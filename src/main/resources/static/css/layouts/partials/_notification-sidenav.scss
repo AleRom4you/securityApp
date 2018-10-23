@@ -1,0 +1,83 @@
+.portal-notification-panels {
+  background-color: darken($mdc-theme-background, 2%);
+}
+.portal-notifications-tab-panel {
+  padding: 16px;
+}
+
+.portal-notifications-tab-panel__title {
+  font-weight: 300;
+}
+
+// Notification Cards
+.portal-notification-card {
+  transition: box-shadow .3s;
+  background-color: $mdc-theme-background;
+  margin-bottom: 16px;
+  &:hover {
+    @include mdc-elevation(6, #000, 0);
+  }
+  .mdc-card__primary {
+    background-color: darken($mdc-theme-background, 5%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    & + .portal-notification-card__content {
+      padding: 16px;
+    }
+  }
+  .mdc-typography--caption {
+    height: 24px;
+    text-align: right;
+    span {
+      display: block;
+      transition: opacity .3s, transform .3s;
+    }
+    i {
+      height: 24px;
+      width: 24px;
+      font-size: 14px;
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .3s, transform .3s;
+      cursor: pointer;
+    }
+  }
+  &:hover {
+    .mdc-typography--caption {
+      span {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      i {
+        opacity: 1;
+        transform: translateY(-14px);
+      }
+    }
+  }
+}
+
+.portal-notification-card__title {
+  margin: 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  line-height: 16px;
+}
+
+.portal-notification-card__subtitle {
+  font-size: 14px;
+  line-height: 28px;
+  margin: 0;
+}
+
+.portal-notification-card__text {
+  margin-top: 0;
+}
+// Rtl change icon
+.portal-drawer-notification-collapse-icon {
+  @include mdc-rtl {
+    transform: rotate(180deg);
+  }
+}

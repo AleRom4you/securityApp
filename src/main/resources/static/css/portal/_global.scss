@@ -1,0 +1,265 @@
+ /**
+ * Portal Global Styles
+ */
+ @import 'icons';
+ @import 'badge';
+ @import 'widgets';
+ @import 'email';
+ @import 'todo';
+ @import 'map';
+ @import 'chat';
+ @import 'contacts';
+ @import 'notes';
+ @import 'calendar';
+ @import 'pace';
+ @import 'marquee';
+ @import 'project-stepper';
+
+ /**
+  * Portal Styles
+  */
+ @import 'portal/pages';
+
+ /**
+  * Portal MDC modifications
+  */
+ @import 'mdc/card';
+ @import 'mdc/table';
+ @import 'mdc/list';
+ @import 'mdc/toolbar';
+ @import 'mdc/drawer';
+
+ @import 'layouts/partials/notification-sidenav';
+ @import 'layouts/partials/sidemenu';
+ @import 'layouts/partials/top-toolbar';
+ @import 'layouts/partials/footer';
+
+ /**
+  * Portal Layouts
+  */
+ @import 'layouts/classic';
+ @import 'layouts/compact';
+ @import 'layouts/toolbar';
+ @import 'layouts/boxed';
+ @import 'layouts/tabbed';
+ @import 'layouts/funky';
+ @import 'layouts/no-layout';
+
+
+/**
+  * Basic Styling
+  */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-kerning: auto;
+  font-kerning: auto;
+}
+
+a {
+  text-decoration: none;
+  color: $mdc-theme-primary;
+}
+
+.portal-list {
+  list-style-type: none;
+  padding: 0;
+  li {
+    text-indent: 24px;
+    margin-bottom: 12px;
+    &:before {
+      content: "\E876   ";
+      font-family: "Material Icons";
+      position: relative;
+      font-size: 12px;
+      line-height: 21px;
+      color: $mdc-theme-secondary;
+      left: -12px;
+    }
+  }
+  &.portal-list--columns-2 {
+    column-count: 2;
+  }
+}
+// All content wrapped.
+.portal-wrapper {
+  display: flex;
+  height: 100%;
+  width: 100%;
+
+  &__sidenav {
+    z-index: 6;
+    .mdc-drawer, .mdc-drawer.mdc-drawer--open {
+      @include mdc-elevation(24, #000, 0);
+      height: 100%;
+    }
+    .mdc-drawer--closed {
+      box-shadow: none;
+    }
+  }
+}
+
+// Fullheight grid
+.mdc-layout-grid--fullheight {
+  height: 100%;
+  width: 100%;
+  > .mdc-layout-grid__inner {
+    height: 100%;
+    align-items: center;
+  }
+}
+
+// Main section next to sidebar.
+.portal-main {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  &__content {
+    flex: 1 1 100%;
+    overflow-y: auto;
+    position: relative;
+  }
+  .portal-wrapper--boxed &__content, .portal-wrapper--tabbed &__content {
+    @include mdc-elevation(24, #000, 0);
+  }
+}
+
+// Hide scrollbars class
+.portal-hide-scrollbars {
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+// Tabs
+.mdc-tab-bar__indicator {
+  @include mdc-theme-prop(background-color, primary);
+}
+.portal-tab-panel.portal-tab-panel--active {
+  display: block;
+}
+.portal-tab-panel {
+  display: none;
+}
+
+// Basic typography
+p {
+  margin: 0 0 12px;
+  line-height: 24px;
+}
+h1 {
+  line-height: 32px;
+}
+.portal-font-weight-light {
+  font-weight: lighter !important;
+}
+.portal-text-align-center {
+  text-align: center;
+}
+.portal-font-size-big {
+  font-size: 1.75em;
+}
+.portal-font-size-small {
+  font-size: 0.75em;
+}
+.portal-text-center {
+  text-align: center;
+}
+.portal-text-light {
+  font-weight: lighter;
+}
+.portal-text-bold {
+  font-weight: bolder;
+}
+.portal-text-medium {
+  font-weight: 500;
+}
+.portal-text-normal {
+  font-weight: normal;
+}
+
+// Margin Control
+.portal-margin-top-none {
+  margin-top: 0;
+}
+.portal-margin-bottom-none {
+  margin-bottom: 0;
+}
+.portal-margin-none {
+  margin: 0;
+}
+
+// Flex Classes
+.portal-display-flex {
+  display: flex;
+  align-items: center;
+  &--column {
+    flex-direction: column;
+  }
+  &__flexed {
+    flex: 1 1 100%;
+  }
+}
+
+// Theme for side navigation
+.portal-navigation {
+  @include mdc-theme-prop(background-color, $portal-sidenav-fill-color);
+  @include mdc-theme-prop(color, $portal-sidenav-ink-color);
+  &.portal-navigation--light {
+    @include mdc-theme-prop(background-color, $portal-sidenav-fill-color-light);
+    @include mdc-theme-prop(color, $portal-sidenav-ink-color-light);
+  }
+}
+
+// Various mdc fixes
+.mdc-text-field--fullwidth.portal-text-field--fullwidth {
+  .mdc-text-field__input {
+    height: 24px !important;
+    padding: 30px 0 0 !important;
+  }
+  &.mdc-text-field--with-trailing-icon.mdc-text-field--dense {
+    .mdc-text-field__icon {
+      bottom: 4px;
+      right: 0;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  [dir="rtl"] &.mdc-text-field--with-trailing-icon.mdc-text-field--dense {
+    .mdc-text-field__icon {
+      right: auto;
+      left: 0;
+    }
+  }
+}
+
+// Fix for toolbar title
+.mdc-toolbar__menu-icon + .mdc-toolbar__title {
+  padding: 0 16px;
+}
+
+.mdc-text-field--textarea .mdc-floating-label {
+  background-color: inherit;
+  color: inherit;
+}
+
+// Gradient variations
+.mdc-theme--primary-bg-gradient {
+  background: linear-gradient($mdc-theme-primary, darken($mdc-theme-primary, 10%));
+}
+.mdc-theme--secondary-bg-gradient {
+  background: linear-gradient($mdc-theme-secondary, darken($mdc-theme-secondary, 10%));
+}
+
+.portal-flex-wrap {
+  flex-wrap: wrap;
+}

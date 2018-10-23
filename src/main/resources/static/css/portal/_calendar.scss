@@ -1,0 +1,160 @@
+.mdc-layout-grid--calendar-container {
+  padding: 0;
+  min-height: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.portal-calendar {
+  grid-column: 2/-2;
+  @include mdc-layout-grid-media-query_(phone) {
+    grid-column: 1/-1;
+  }
+  @include mdc-layout-grid-media-query_(tablet) {
+    grid-column: 1/-1;
+  }
+}
+
+.portal-calendar-content__nav {
+  display: flex;
+  margin-bottom: 36px;
+  a {
+    color: inherit;
+  }
+  .portal-calendar-content__nav__switch--active {
+    @include mdc-theme-prop(color, secondary);
+  }
+}
+
+.portal-calendar-content__nav__date,
+.portal-calendar-content__nav__switch {
+  display: flex;
+  align-items: center;
+}
+
+.portal-calendar-content__nav__date {
+  flex: 1 1 auto;
+  align-items: center;
+  .mdc-typography--headline {
+    padding: 0 24px;
+  }
+}
+.portal-date-left-icon, .portal-date-right-icon {
+  @include mdc-rtl {
+    transform: rotate(180deg);
+  }
+}
+
+.portal-calendar-content__nav__switch {
+  a {
+    margin: 0 12px;
+    &:last-child {
+      margin-right: 0;
+      @include mdc-rtl {
+        margin-right: 12px;
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.portal-calendar-content__table {
+  table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    background: rgba($mdc-theme-background, .75);
+    table-layout: fixed;
+    border-radius: 4px;
+    overflow: hidden;
+    thead {
+      @include mdc-theme-prop(background, primary);
+      @include mdc-theme-prop(color, text-primary-on-primary-dark);
+    }
+    th, td {
+      border-style: solid;
+      border-width: 1px;
+      border-color: rgba(invert($mdc-theme-background), .1);
+      padding: 0;
+    }
+    td {
+      height: 124px;
+      vertical-align: top;
+      text-align: right;
+      font-size: .75em;
+      > span {
+        display: inline-block;
+        padding: 8px;
+        margin-bottom: 16px;
+        vertical-align: middle;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      a {
+        text-align: left;
+      }
+      div {
+        padding: 8px;
+        margin: 1px 2px;
+        border-radius: 3px;
+        @include mdc-theme-prop(background, secondary);
+        @include mdc-theme-prop(color, text-secondary-on-secondary-dark);
+      }
+    }
+    th {
+      height: 48px;
+      vertical-align: middle;
+      font-size: .875em;
+      @include mdc-theme-prop(border-color, primary);
+    }
+  }
+  &.portal-calendar-content__table-week {
+    table {
+      .portal-calendar-content__table-event-allday {
+        height: 48px;
+        text-align: center;
+        vertical-align: middle;
+        border-bottom-width: 1px;
+        border-bottom-style: double;
+        border-bottom-color: rgba($mdc-theme-secondary, .1);
+      }
+      .portal-calendar-content__table-event-allday span {
+        margin-bottom: 0;
+      }
+      thead tr th:first-child {
+        width: 52px;
+      }
+      tbody tr:first-child td:first-child {
+        vertical-align: middle;
+        text-align: right;
+      }
+      .portal-calendar-content__table-date-today {
+        background: rgba($mdc-theme-secondary, .1);
+      }
+      td {
+        height: 36px;
+      }
+    }
+  }
+}
+
+.portal-calendar-content__table-date-past {
+  opacity: .5;
+  filter: grayscale(50%);
+}
+
+.portal-calendar-content__table-date-today {
+  background: rgba($mdc-theme-background, .75);
+}
+
+.portal-button__add-event {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  @include mdc-rtl {
+    right: auto;
+    left: 24px;
+  }
+}
