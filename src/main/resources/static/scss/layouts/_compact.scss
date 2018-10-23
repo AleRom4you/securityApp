@@ -1,0 +1,90 @@
+// Side Navigation Width Override
+$mdc-persistent-drawer-width-compact: 120px;
+.portal-wrapper__sidenav--compact {
+  .mdc-drawer--persistent.mdc-drawer--open:first-child {
+    width: $mdc-persistent-drawer-width-compact;
+    .mdc-drawer__drawer {
+      width: $mdc-persistent-drawer-width-compact;
+      border: 0;
+    }
+    .mdc-toolbar__title {
+      margin: 0;
+    }
+  }
+  .mdc-drawer--temporary.mdc-drawer--open:first-child .mdc-drawer__drawer {
+    width: $mdc-persistent-drawer-width-compact;
+  }
+  
+  .mdc-list-item {
+    font-size: 12px;
+  }
+  .portal-navigation .portal-dropdown-menu {
+    width: 100%;
+    min-width: auto;
+    background: darken($mdc-theme-primary-dark, 10%);
+    .mdc-menu__items {
+      @include mdc-theme-prop(color, $portal-sidenav-ink-color);
+      padding: 0;
+      max-height: 300px;
+    }
+    .mdc-list-item {
+      justify-content: center;
+      a {
+        color: inherit;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+  .portal-navigation--light .portal-dropdown-menu {
+    background: darken($portal-sidenav-fill-color-light, 2%);
+    .mdc-menu__items {
+      @include mdc-theme-prop(color, $portal-sidenav-ink-color-light);
+    }
+  }
+}
+
+// Light theme
+
+// Hide menu icon by default
+.portal-burger-menu-icon--compact {
+  display: none;
+}
+
+.portal-menu-button.mdc-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 100%;
+  height: 96px;
+  padding: 16px;
+  position: relative;
+  color: inherit;
+  line-height: 1;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.portal-menu-button__icon {
+  font-size: 16px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  margin-bottom: 8px;
+}
+
+.portal-menu-button__badge {
+  min-width: 16px;
+  height: 16px;
+  line-height: 16px;
+  position: absolute;
+  left: 52%;
+  top: 16px;
+  @include mdc-rtl {
+    left: auto;
+    right: 52%;
+  }
+}
+

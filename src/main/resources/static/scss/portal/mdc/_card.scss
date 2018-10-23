@@ -1,0 +1,128 @@
+// Card utility classes
+.mdc-card--portal-fullheight {
+  height: 100%;
+}
+.mdc-card--space-between {
+  justify-content: space-between;
+}
+
+.mdc-card--portal-space-between {
+  justify-content: space-between;
+  align-content: stretch;
+  align-items: stretch;
+}
+
+// Portal Horizontal Cards
+.portal-card--horizontal {
+  .mdc-layout-grid {
+    padding: 0;
+  }
+  .mdc-layout-grid__inner {
+    align-items: stretch;
+    grid-gap: 16px;
+    @include mdc-layout-grid-media-query_(tablet) {
+      grid-template-columns: 1fr;
+    }  
+  }
+  .portal-card__content--column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.portal-card__content--column-actions {
+  display: flex;
+  margin-top: 24px;
+  > * {
+    flex: 1 1 50%;
+  }
+  &.portal-card__content--column-actions-vertical {
+    flex-direction: column;
+    > * {
+      margin-top: 24px;
+    }
+  }
+}
+
+// Portal Card Title
+.portal-card__title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;  
+  margin-bottom: 24px;
+  &.portal-card__title--vertical {
+    flex-direction: column;
+  }
+}
+
+.portal-card__logo {
+  max-height: 36px;
+  .portal-card__title--vertical & {
+    max-height: none;
+  }
+}
+
+.portal-card--headline {
+  margin: 0;
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 500;
+  padding: 0 16px;
+}
+
+// Card Media
+.portal-card__16-9-media {
+  background-image: url('http://via.placeholder.com/300x200');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 12.313rem;
+}
+.portal-card__header {
+  padding: 16px;
+  .portal-card--hero & {
+    padding: 48px;
+  }
+}
+.portal-card__header--title {
+  font-size: 1.1rem;
+  line-height: 2rem;
+  letter-spacing: normal;
+  font-weight: 500;
+  margin: 0;
+}
+.portal-card__header--subtitle {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+.portal-card__content {
+  padding: 16px;
+  .portal-card--hero & {
+    padding: 48px;
+  }
+  .portal-card__header + & {
+    padding-top: 0;
+  }
+}
+/* Cards with avatar */
+.portal-card__header--avatar {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  max-height: 100%;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+.portal-card__header__avatar {
+  border-radius: 50%;
+}
+.portal-card__header__heading {
+  padding: 0 16px;
+}

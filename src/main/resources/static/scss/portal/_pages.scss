@@ -1,0 +1,132 @@
+// Misc Pages 
+.portal-pages__header {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  max-height: 100%;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+  background: rgba(0,0,0,0.050);
+}
+
+.portal-pages__content-inner {
+  @include mdc-theme-prop(background, background);
+  margin-top: -200px;
+  padding: 60px;
+  box-shadow: 0px -40px 100px -50px rgba(0, 0, 0, 0.3), -20px 0px 40px -50px rgba(0, 0, 0, 0.2), 20px 0px 40px -50px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: portal-pages__content-inner .3s forwards 1 ease-in-out;
+  &.portal-pages__content-inner-noanimation {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+.portal-pages__header-icon,
+.portal-pages__header-text {
+  margin-top: 0;
+  margin-bottom: 150px;
+  animation: portal-pages__header-icon 4s infinite ease-in-out;
+  font-weight: 200;
+  font-size: 64px;
+}
+
+.portal-pages__content-grid {
+  padding: 0;
+}
+
+.portal-pages__content-grid-row {
+  display: flex;  
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.050);
+  &.portal-pages__content-grid-row--center {
+    border-bottom: 0;
+    justify-content: center;
+  }
+}   
+
+.portal-pages__heading {
+  text-transform: uppercase;
+  padding-left: 12px;
+  position: relative;
+  font-weight: 500;
+  margin-bottom: 24px;
+  font-size: 19px;
+  &:after {
+    content: "";
+    height: 100%;
+    width: 2px;
+    background: $mdc-theme-primary;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  @include mdc-rtl { 
+    padding-left: 0px;
+    padding-right: 12px;
+    &:after {
+      left: auto;
+      right: 0;   
+    }
+  }
+}
+
+.portal-pages__subheading {
+  position: relative;
+  font-weight: 500;
+  margin-top: 36px;
+  margin-bottom: 24px;
+  font-size: 17px;
+}
+
+.portal-pages__content-label {
+  line-height: 24px;
+}
+
+.portal-pages__content-theme-color {
+  padding: 0;
+  border: 6px solid rgba(0,0,0,0.050);
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  border-radius: 50%;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+  &::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+  &::-webkit-color-swatch {
+    border: none;
+  }
+}
+
+@keyframes portal-pages__header-icon {
+  0%, 100% {
+    stroke: $mdc-theme-primary;
+    color: $mdc-theme-primary;
+  }
+  75% {
+    stroke: $mdc-theme-secondary;
+    color: $mdc-theme-secondary;
+  }
+}
+
+@keyframes portal-pages__content-inner {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

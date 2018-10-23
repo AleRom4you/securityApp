@@ -1,0 +1,223 @@
+.mdc-layout-grid--contacts-container {
+  padding: 0;
+  height: 100%;
+  > .mdc-layout-grid__inner {
+    height: 100%;
+    grid-gap: 0;
+    @include mdc-layout-grid-media-query_(phone) {
+      grid-template-columns: 70px 1fr;
+    }
+    @include mdc-layout-grid-media-query_(tablet) {
+      grid-template-columns: 70px 1fr;
+    }
+  }
+}
+
+.portal-contacts__details {
+  overflow: auto;
+  .mdc-layout-grid {
+    padding: 24px !important;
+  }
+}
+
+.portal-contacts__search {
+  @include mdc-layout-grid-media-query_(phone) {
+    display: none;
+  }
+  @include mdc-layout-grid-media-query_(tablet) {
+    display: none;
+  }
+}
+
+.portal-contacts__details-header {
+  // Add a background image or use the default animation
+  min-height: 33vh;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background: darken($mdc-theme-secondary, 22%);
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    transform-origin: 0 0;
+    top: 100%;
+    transform: translate3d(-50%, -50%, 0);
+    left: 96px;
+    border-radius: 50%;
+    opacity: 0;
+  }
+  &:before {
+    background: darken($mdc-theme-secondary, 12%);
+    animation: portal-contacts__details-header-before  .6s ease-out forwards 1;
+    animation-delay: .2s;
+  }
+  &:after {
+    @include mdc-theme-prop(background, secondary);
+    animation: portal-contacts__details-header-after  .4s ease-out  forwards 1;
+    animation-delay: .4s;
+  }
+  @include mdc-layout-grid-media-query_(tablet) {
+    &:before, &:after {
+      display: none;
+    }
+  }
+  @include mdc-layout-grid-media-query_(phone) {
+    &:before, &:after {
+      display: none;
+    }
+  }
+}
+
+.portal-contacts__details-content {
+  position: relative;
+  padding: 16px;
+  z-index: 2;
+}
+
+.portal-contacts__details-avatar-container {
+  position: relative;
+}
+
+.portal-contacts__details-avatar {
+  width: 160px;
+  position: absolute;
+  animation: portal-contacts__details-avatar  .8s ease-out  forwards 1;
+  transform: translate3d(-50%, -40px, 0);
+  left: 50%;
+  img {
+    @include mdc-theme-prop(border-color, background);
+    border-radius: 50%;
+    border-radius: 50%;
+    border-width: 16px;
+    border-style: solid;
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    height: 100%;
+  }
+  &:before {
+    box-shadow: 0px 0px 20px darken($mdc-theme-secondary, 30%);;
+    width: 100%;
+    border-radius: 50%;
+    z-index: 1;
+    animation: portal-contacts__details-avatar-before  .3s ease-out  forwards 1;
+    animation-delay: 0.8s;
+    opacity: 0;
+  }
+  &:after {
+    @include mdc-theme-prop(background, background);
+    width: 180px;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    transform: translateX(-50%);
+  }
+}
+
+.portal-contacts__details-grid {
+  grid-template-columns:160px 1fr;
+  @include mdc-layout-grid-media-query_(phone) {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  @include mdc-layout-grid-media-query_(tablet) {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+
+@keyframes portal-contacts__details-avatar {
+  0% {
+    transform: translate3d(-50%, -100px, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate3d(-50%, -121px, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes portal-contacts__details-header-before {
+  0% {
+    width: 160px;
+    height: 160px;
+    opacity: 0;
+  }
+  100% {
+    width: 75vw;
+    height: 75vw;
+    opacity: 1;
+  }
+}
+
+@keyframes portal-contacts__details-header-after {
+  0% {
+    width: 160px;
+    height: 160px;
+    opacity: 0;
+  }
+  100% {
+    width: 35vw;
+    height: 35vw;
+    opacity: 1;
+  }
+}
+
+@keyframes portal-contacts__details-avatar-before {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes portal-contacts-app__list-item {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.2, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+.portal-contacts__details-extra {
+  min-width: 160px;
+  font-size: .8em;
+  z-index: 5;
+  position: relative;
+  padding-top: 36px;
+  text-align: center;
+  p {
+    margin-bottom: 0;
+    line-height: 24px;
+  }
+  a {
+    @include mdc-theme-prop(color, secondary);
+    text-decoration: none;
+    padding: 12px;
+  }
+}
+
+.portal-contacts__details-main {
+  z-index: 5;
+  position: relative;
+  padding-top: 36px;
+  .mdc-typography--headline {
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,60 @@
+// Notes app
+.mdc-layout-grid--notes-container {
+  padding: 0;
+  height: 100%;
+  .mdc-layout-grid__inner {
+    height: 100%;
+    grid-gap: 0;
+    .mdc-list {
+      padding: 0;
+    }
+    @include mdc-layout-grid-media-query_(phone) {
+      grid-template-columns: 160px 1fr;
+    }
+    @include mdc-layout-grid-media-query_(tablet) {
+      grid-template-columns: 90px 1fr;
+    }
+  }
+}
+
+.mdc-layout-grid--notes-list {
+  box-shadow: 0 0 24px rgba(0,0,0,.1);
+  position: relative;
+}
+.portal-notes-container {
+  background-color: darken($mdc-theme-background, 2%);
+  height: 100%;
+}
+
+.portal-note {
+  width: 100%;
+  height: 100%;
+  padding: 24px 24px 0;
+  grid-column: 1/-1;
+  box-sizing: border-box;
+  display: flex;
+  textarea {
+    width: 100%;
+    border: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: 1.7;
+    padding: 24px;
+    height: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 0 24px rgba(0,0,0,.1);
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.portal-button__add-note {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  @include mdc-rtl { 
+    right: auto;
+    left: 24px;
+  }
+}

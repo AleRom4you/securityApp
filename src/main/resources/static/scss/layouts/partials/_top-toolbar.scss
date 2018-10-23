@@ -1,0 +1,41 @@
+.portal-toolbar {
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  .mdc-toolbar__section {
+    align-items: center;
+  }
+  .portal-wrapper--boxed &, .portal-wrapper--tabbed & {
+    box-shadow: none;
+    background: transparent !important;
+  }
+}
+
+.portal-toolbar__badge {
+  position: absolute;
+  min-width: 20px;
+  height: 20px;
+  line-height: 20px;
+  top: 4px;
+  right: 4px;
+  @include mdc-rtl {
+    right: auto;
+    left: 4px;
+  }
+}
+.portal-toolbar__notification-icon .material-icons {
+  transform-origin: 50% 0;
+  animation-name: portal-toolbar__notification-icon;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes portal-toolbar__notification-icon {
+  0% { transform: rotate(0deg) }
+  1% { transform: rotate(25deg) }
+  3% { transform: rotate(-20deg) }
+  5% { transform: rotate(10deg) }
+  7% { transform: rotate(-5deg) }
+  9% { transform: rotate(2deg) }
+  11% { transform: rotate(-2deg) }
+  12% { transform: rotate(0deg) }
+  20% { transform: rotate(0deg) }
+}

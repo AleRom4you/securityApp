@@ -1,0 +1,128 @@
+// Todo app
+.portal-todo-container {
+  background-color: darken($mdc-theme-background, 2%);
+  height: 100%;
+  text-align: center;
+}
+
+.portal-card-todo {
+  margin-top: 24px;
+  @include mdc-elevation(12, #000, 0);
+  margin-bottom: 36px;
+}
+
+.portal-card-todo__header {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+  min-height: 240px;
+  h1 {
+    color: #fff;
+    font-weight: 500;
+    margin-top: 160px;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 2;
+    animation: portal-card-todo__header .3s forwards 1;
+    animation-delay: .9s;
+    opacity: 0;
+    transform: translateY(20px);
+    text-align: left;
+  }
+}
+.portal-todo__actions {
+  margin-bottom: 24px;
+}
+
+// Demo animation
+.portal-card-todo__header {
+  background-image: linear-gradient(to bottom right, rgba(231, 77, 92, 1), rgba(243, 119, 77, 1));
+}
+
+.portal-card-todo__header-sun {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  right: 0;
+  top: 0;
+  animation: portal-card-todo__header-sun 1s 1;
+  &:after {
+    content: '';
+    background: #ffb058;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 40px rgba(#ffb058, .4), 0px 0px 0px 80px rgba(#ffb058, .2);
+    animation: portal-card-todo__header-sun-shine 4s infinite ease-in-out;
+    transform: translateY(5px);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.portal-card-todo__header-mountain {
+  background: rgba(#ffb057, .3);
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  border-radius: 2px;
+  left: 0;
+  transform: translateY(200px) rotate(45deg);
+  top: 150px;
+  animation: portal-card-todo__header-mountain 1s forwards 1;
+  animation-delay: .3s;
+  opacity:1;
+  &:nth-child(2) {
+    left: 20%;
+    top: 180px;
+    animation-delay: 0.6s;
+    background: rgba(#ffb057, 1);
+  }
+}
+
+@keyframes portal-card-todo__header-sun-shine {
+  0%, 100% {
+    box-shadow: 0px 0px 0px 40px rgba(#ffb058, .4), 0px 0px 0px 80px rgba(#ffb058, .2);
+    transform: translateY(5px);
+  }
+  50% {
+      box-shadow: 0px 0px 0px 60px rgba(#ffb058, .3), 0px 0px 0px 100px rgba(#ffb058, .1);
+      transform: translateY(0px);
+  }
+}
+
+@keyframes portal-card-todo__header-mountain {
+  0% {
+    transform: translateY(200px) rotate(45deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 1;
+  }
+}
+
+@keyframes portal-card-todo__header-sun {
+  0% {
+    top: 200px;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes portal-card-todo__header {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

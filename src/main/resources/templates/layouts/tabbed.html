@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portal, Material Design HTML Template</title>
+    <base href="{{ base }}tabbed/">
+    <!-- load Google fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Barlow:100,300,400,400i,500,700,900" rel="stylesheet">
+    <!-- Portal Styles -->
+    <link id="portal-stylesheet" rel="stylesheet" href="{{ base }}assets/css/classic-light_blue-pink.css">
+    <!-- page specific CSS -->
+    {% block styles %}{% endblock %}
+  </head>
+
+  <body class="mdc-typography mdc-theme--primary-light-bg pace-on">
+
+    {% include "partials/loader.html" %}
+
+    <div class="portal-wrapper portal-wrapper--tabbed">
+
+        <div class="portal-wrapper__sidenav mdc-theme--dark">
+          <aside id="left-drawer" class="mdc-drawer mdc-drawer--temporary mdc-drawer--closed mdc-drawer--portal-flex-content">
+            <nav class="mdc-drawer__drawer">
+              {% include "partials/sidemenu.html" %}
+            </nav>
+          </aside>
+        </div>
+
+      <main class="portal-main">
+
+        {% include "partials/top-toolbar.html" %}
+        <header class="mdc-toolbar mdc-theme--primary-bg mdc-toolbar--portal-no-shrink mdc-elevation--z2  mdc-toolbar--portal-menu">
+          <div class="mdc-toolbar__row">
+            <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+              <div id="tab-bar-tabbed-scroller" class="mdc-tab-bar-scroller">
+                <div class="mdc-tab-bar-scroller__indicator mdc-tab-bar-scroller__indicator--back">
+                  <a class="mdc-tab-bar-scroller__indicator__inner material-icons" href="#" aria-label="scroll back button">
+                    navigate_before
+                  </a>
+                </div>
+                <div class="mdc-tab-bar-scroller__scroll-frame">
+
+                  <nav id="portal-tabbed-nav" class="mdc-tab-bar portal-tab-bar mdc-tab-bar-scroller__scroll-frame__tabs">
+                    <a class="mdc-tab mdc-tab--active">
+                      Dashboard
+                    </a>
+                    <a class="mdc-tab">
+                      Apps
+                    </a>
+                    <a class="mdc-tab">
+                      Form Controls
+                    </a>
+                    <a class="mdc-tab">
+                      Layout
+                    </a>
+                    <a class="mdc-tab">
+                      Buttons & Indicators
+                    </a>
+                    <a class="mdc-tab">
+                      Popups & Modals
+                    </a>
+                    <span class="mdc-tab-bar__indicator mdc-theme--primary-light"></span>
+                  </nav>
+                </div>
+                <div class="mdc-tab-bar-scroller__indicator mdc-tab-bar-scroller__indicator--forward">
+                  <a class="mdc-tab-bar-scroller__indicator__inner material-icons" href="#" aria-label="scroll forward button">
+                    navigate_next
+                  </a>
+                </div>
+            </section>
+          </div>
+        </header>
+        <div id="portal-tabbed-menu-panels" class="portal-toolbar-tab-panel-wrapper">
+          <header class="mdc-toolbar mdc-toolbar--portal-no-shrink mdc-elevation--z2  mdc-toolbar--portal-menu portal-toolbar-tab-panel portal-toolbar-tab-panel--active">
+            <div class="mdc-toolbar__row">
+              <section class="mdc-toolbar__section mdc-toolbar__section--align-start portal-flex-wrap">
+                <a href="index.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Analytics</a>
+                <a href="dashboard-commerce.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Ecommerce</a>
+                <a href="dashboard-crypto.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Cryptocurrency</a>
+                <a href="dashboard-project.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Project</a>
+              </section>
+            </div>
+          </header>
+          <header class="mdc-toolbar mdc-toolbar--portal-no-shrink mdc-elevation--z2  mdc-toolbar--portal-menu portal-toolbar-tab-panel">
+            <div class="mdc-toolbar__row">
+              <section class="mdc-toolbar__section mdc-toolbar__section--align-start portal-flex-wrap">
+                <a href="email.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Email</a>
+                <a href="todo.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Todo</a>
+                <a href="maps.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Maps</a>
+                <a href="chat.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Chat</a>
+                <a href="contacts.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Contacts</a>
+                <a href="notes.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Notes</a>
+                <a href="calendar.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Calendar</a>
+              </section>
+            </div>
+          </header>
+          <header class="mdc-toolbar mdc-toolbar--portal-no-shrink mdc-elevation--z2  mdc-toolbar--portal-menu portal-toolbar-tab-panel">
+            <div class="mdc-toolbar__row">
+              <section class="mdc-toolbar__section mdc-toolbar__section--align-start portal-flex-wrap">
+                <a href="checkbox.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Checkbox</a>
+                <a href="input.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Input</a>
+                <a href="radio.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Radio</a>
+                <a href="select.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Select</a>
+                <a href="slider.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Slider</a>
+              </section>
+            </div>
+          </header>
+          <header class="mdc-toolbar mdc-toolbar--portal-no-shrink mdc-elevation--z2  mdc-toolbar--portal-menu portal-toolbar-tab-panel">
+            <div class="mdc-toolbar__row">
+              <section class="mdc-toolbar__section mdc-toolbar__section--align-start portal-flex-wrap">
+                <a href="cards.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Cards</a>
+                <a href="tabs.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Tabs</a>
+              </section>
+            </div>
+          </header>
+          <header class="mdc-toolbar mdc-toolbar--portal-no-shrink mdc-elevation--z2  mdc-toolbar--portal-menu portal-toolbar-tab-panel">
+            <div class="mdc-toolbar__row">
+              <section class="mdc-toolbar__section mdc-toolbar__section--align-start portal-flex-wrap">
+                <a href="buttons.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Buttons</a>
+                <a href="progress.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Linear Progress</a>
+              </section>
+            </div>
+          </header>
+          <header class="mdc-toolbar mdc-toolbar--portal-no-shrink mdc-elevation--z2  mdc-toolbar--portal-menu portal-toolbar-tab-panel">
+            <div class="mdc-toolbar__row">
+              <section class="mdc-toolbar__section mdc-toolbar__section--align-start portal-flex-wrap">
+                <a href="dialog.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Dialog</a>
+                <a href="snackbar.html" class="mdc-theme--text-primary-on-primary-dark mdc-toolbar--portal-menu-link">Snackbar</a>
+              </section>
+            </div>
+          </header>
+        </div>
+
+        <div class="portal-main__content mdc-theme--background mdc-theme--text-primary-on-background">
+          {% block content %}{% endblock %}
+        </div>
+
+        {% include "partials/footer.html" %}
+
+      </main>
+
+      {% include "partials/notification-sidenav.html" %}
+
+    </div>
+
+    <!-- initialise material components js -->
+    <script src="{{ base }}assets/js/material-components-web.js"></script>
+    <script>mdc.autoInit()</script>
+    <!-- initialise marquee js -->
+    <script src="{{ base }}assets/js/marquee3k.js"></script>
+    <script>Marquee3k.init()</script>
+    <!-- layout js -->
+    <script src="{{ base }}assets/js/layout/toolbar.js"></script>
+    <script src="{{ base }}assets/js/partials/notification-sidenav.js"></script>
+    <script src="{{ base }}assets/js/partials/top-toolbar.js"></script>
+    <script src="{{ base }}assets/js/Chart.js"></script>
+    <script src="{{ base }}assets/js/pace.js"></script>
+    <!-- page specific JS -->
+
+    <script>
+      // Handles tab change on toolbar menu
+      (function() {
+        const headerTabBar = new mdc.tabs.MDCTabBarScroller(document.querySelector('#tab-bar-tabbed-scroller'));
+        headerTabBar.layout();
+        headerTabBar.tabBar.layout();
+        headerTabBar.tabBar.listen('MDCTabBar:change', function (t) {
+          const detailTabBar = t.detail;
+          const index = detailTabBar.activeTabIndex;
+          const panels = document.querySelector('#portal-tabbed-menu-panels');
+          portalUpdateTabPanels(panels, index);
+        });
+
+        function portalUpdateTabPanels(panels, index) {
+          const activePanel = panels.querySelector('.portal-toolbar-tab-panel.portal-toolbar-tab-panel--active');
+          if (activePanel) {
+            activePanel.classList.remove('portal-toolbar-tab-panel--active');
+          }
+          const newActivePanel = panels.querySelector('.portal-toolbar-tab-panel:nth-child(' + (index + 1) + ')');
+          if (newActivePanel) {
+            newActivePanel.classList.add('portal-toolbar-tab-panel--active');
+          }
+        }
+        const body = document.getElementsByTagName('body').item(0);
+        // We need to relayout all tabs when switching to rtl.
+        body.addEventListener('portalDirectionChanged', function () {
+          headerTabBar.layout();
+          headerTabBar.tabBar.layout();
+        });
+      })();
+    </script>
+    {% block scripts %}{% endblock %}
+
+  </body>
+</html>

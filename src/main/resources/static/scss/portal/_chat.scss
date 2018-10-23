@@ -1,0 +1,192 @@
+.mdc-list--avatar-list--item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.mdc-layout-grid--chat-container {
+  padding: 0;
+  height: 100%;
+  > .mdc-layout-grid__inner {
+    height: 100%;
+    grid-gap: 0;
+    @include mdc-layout-grid-media-query_(phone) {
+      grid-template-columns: 70px 1fr;
+    }
+    @include mdc-layout-grid-media-query_(tablet) {
+      grid-template-columns: 70px 1fr;
+    }
+  }
+}
+
+.portal-chat__details {
+  background-color: darken($mdc-theme-background, 2%);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  overflow: auto;
+  max-height: 100%;
+  .mdc-layout-grid {
+    padding: 24px !important;
+  }
+}
+
+.portal-chat__details-content {
+  position: relative;
+  padding: 16px;
+  z-index: 2;
+  overflow: auto;
+}
+
+.portal-chat__details-grid {
+  grid-template-columns: 1fr;
+}
+
+// Comment Container
+.portal-message {
+  margin-bottom: 48px;
+  max-height: none !important;
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  max-height: 100%;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  @include mdc-rtl {
+    flex-direction: row-reverse;
+  }
+  img {
+    max-width: 100%;
+  }
+  &.portal-message--not-author {
+    justify-content: flex-end;
+  }
+}
+
+// Comment Card
+.portal-message__card {
+  max-width: 800px;
+  min-width: 400px;
+  width: auto;
+  flex: initial !important;
+  align-self: flex-start;
+  position: relative;  
+  @media (max-width: 1100px) {
+    max-width: 100%;
+    min-width: 60%;
+  }
+  .portal-card__content p:last-child {
+    margin-bottom: 0;
+  }
+  &:before, &:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    position: absolute;
+    right: 100%;
+    top: 10px;
+  }
+  &:before {
+    top: 12px;
+    border-right: 10px solid $mdc-theme-background;
+  }
+  .portal-message--not-author & {
+    background: $mdc-theme-primary;
+    .portal-card__content {
+      @include mdc-theme-prop(color, text-primary-on-primary-dark);
+    }
+  }
+  .portal-message--not-author &:before, .portal-message--not-author &:after {
+    left: 100%;
+    right: auto;
+    transform: rotate(180deg);
+    border-right: 10px solid $mdc-theme-primary;
+  }
+
+  .portal-message__icon {
+    cursor: pointer;
+    vertical-align: middle;
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    margin-left: 2px;
+  }
+}
+// Comment User
+.portal-message__user {
+  margin-right: 16px;
+  width: 60px;
+  align-self: flex-start;
+  .portal-message--not-author & {
+    margin-right: 0;
+    margin-left: 16px;
+    order: 2;
+  }
+  .mdc-typography--caption {
+    text-align: center;
+    display: block;
+  }
+  @include mdc-layout-grid-media-query_(phone) {
+    display: none;
+  }
+}
+.portal-message__avatar {
+  width: 60px;
+  min-width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+  box-sizing: border-box;
+}
+
+.portal-message__card-time, .portal-message__card-action {
+  font-size: 11px;
+  position: absolute;
+  bottom: -24px;
+  font-style: italic;
+  left: 0px;
+  @include mdc-rtl {
+    left: auto;
+    right: 0;
+  }
+  .portal-message--not-author & {
+    left: auto;
+    right: 0;
+    @include mdc-rtl {
+      left: 0;
+      right: auto;
+    }
+  }
+}
+
+.portal-message__card-action {
+  left: auto;
+  right: 0;
+  opacity: 0;
+  transition: opacity .3s;
+  cursor: pointer;
+  @include mdc-rtl {
+    left: 0;
+    right: auto;
+  }
+  .portal-message--not-author & {
+    right: auto;
+    left: 0;
+    @include mdc-rtl {
+      left: auto;
+      right: 0;
+    }
+  }
+  .portal-message:hover & {
+    opacity: 1;
+  }
+  .portal-message__card-action--warning {
+    padding: 0 6px;
+  }
+}
+
+.portal-chat__details-new-message {
+  padding: 12px 24px;
+  z-index: 1;
+  background: $mdc-theme-background;
+  box-sizing: border-box;
+}

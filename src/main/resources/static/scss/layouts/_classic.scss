@@ -1,0 +1,16 @@
+// Side Navigation Width Override
+$mdc-persistent-drawer-width: 256px;
+.portal-wrapper__sidenav--classic {
+  .mdc-drawer--persistent.mdc-drawer--open {
+    width: $mdc-persistent-drawer-width;
+    .mdc-drawer__drawer {
+      width: $mdc-persistent-drawer-width;
+      border: 0;
+    }
+  }
+}
+
+// Hide menu icon by default
+.portal-burger-menu-icon--classic {
+  display: none;
+}

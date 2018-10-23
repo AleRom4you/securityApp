@@ -1,0 +1,275 @@
+// Portal Dashboard
+.portal-dashboard {
+  background-color: darken($mdc-theme-background, 2%);
+  min-height: 100%;
+ .portal-marquee + & {
+    min-height: calc(100% - 112px); // the marquee height
+ }
+}
+// Portal widgets
+.portal-widget {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  &--fullheight {
+    height: 100%;
+    .portal-widget__card {
+      height: 100%;
+    }
+  }
+}
+
+// Portal Widget Heading
+.portal-widget__heading {
+  text-transform: uppercase;
+  padding-left: 12px;
+  border-left-width: 2px;
+  border-left-style: solid;
+  position: relative;
+  @include mdc-theme-prop(border-color, primary);
+  font-size: 14px;
+  @include mdc-rtl {
+    border-left-width: 0px;
+    border-right-width: 2px;
+    border-right-style: solid;
+    padding-right: 12px;
+    padding-left: 0px;
+    &:after {
+      right: -2px;
+      left: auto;
+    }
+  }
+}
+
+.portal-widget:hover .portal-widget__heading:after {
+  height: 100%;
+}
+
+.portal-widget__heading:after {
+  content: "";
+  width: 2px;
+  height: 0%;
+  position: absolute;
+  bottom: 0;
+  left: -2px;
+  transition: height .5s;
+  @include mdc-theme-prop(background-color, secondary);
+}
+
+// Portal Widget Cards
+.portal-widget__card {
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  transition: box-shadow .3s;
+  &:hover {
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.1);
+  }
+  &--rounded {
+    border-radius: 4px;
+  }
+}
+
+// Portal Widget Elements
+.portal-widget__card-content {
+  padding: 16px;
+  &--extra {
+    padding: 24px;
+  }
+}
+
+// Portal Widget Minigraphs
+.portal-widget__card--minigraphs {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  white-space: nowrap;
+  overflow: hidden;
+  height: 100%;
+  .portal-widget__card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+  .material-icons {
+    font-size: 1rem;
+    width: 1.5rem;
+    text-align: center;
+  }
+}
+
+.portal-widget__canvas {
+  display: flex;
+  justify-content: flex-end;
+  canvas {
+    max-width: 100%;
+    min-height: 100%;
+  }
+}
+
+
+// Portal Widget Icon Menu
+.portal-widget__menu-icon {
+  color: inherit;
+}
+
+// Primary Card
+.portal-widget-primary .mdc-card {
+  @include mdc-theme-prop(background-color, primary);
+  @include mdc-theme-prop(color, text-primary-on-primary-dark);
+}
+
+// Portal Icons - Dots
+.portal-widget__card-icons-dots {
+  font-size: 21px;
+}
+.portal-widget__card-icons-dots__icon {
+   position: relative;
+  span {
+    width: 10px;
+    height: 10px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 51%;
+    border-radius: 50%;
+    animation-name: bounce;
+    animation-duration: 4s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    @include mdc-theme-prop(background, secondary);
+  }
+}
+
+.portal-widget__card-icons-dots > div:nth-child(1) span {
+  animation-delay: 0s;
+}
+.portal-widget__card-icons-dots > div:nth-child(2) span {
+  animation-delay: .3s;
+  background: lighten($mdc-theme-secondary, 5%);
+}
+.portal-widget__card-icons-dots > div:nth-child(3) span {
+  animation-delay: .6s;
+  background: lighten($mdc-theme-secondary, 10%);
+}
+
+@keyframes bounce {
+  0%, 20% {
+    transform: translateY(0px);
+  }
+  10% {
+    transform: translateY(-15px);
+    opacity: .5;
+  }
+}
+
+// Counter Cards
+.mdc-card__portal-counter {
+  font-weight: lighter !important;
+  margin-bottom: 64px;
+  margin-top: 0;
+}
+.mdc-card__portal-divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+// Portal Analytics widget
+.mdc-tab-bar--portal-border-bottom {
+  border-bottom: 1px solid rgba(0,0,0,.12);
+  height: auto;
+}
+
+/* mdc-tab-bar is by default display:table which
+   makes the tab nav overlap with the content */
+.mdc-tab-bar--portal-display-block {
+  display: block;
+  flex-shrink: 0;
+  margin: 0;
+  height: initial;
+}
+
+.mdc-tab__portal-stat-tab {
+  display: inline-flex;
+  flex-direction: column;
+  height: 86px;
+}
+
+.mdc-tab__portal-stat-caption {
+  margin-left: 0; /* To do rtl */
+}
+
+.mdc-tab__portal-stat-icon {
+  font-size: .85em;
+  width: 1.5em;
+  height: 1em;
+  line-height: 1em;
+}
+
+.mdc-tab__portal-stat-caption--trend-up {
+  color: #4caf50;
+}
+
+.mdc-tab__portal-stat-caption--trend-down {
+  color: #f44336;
+}
+
+.mdc-tab--portal-link {
+  padding: 0 24px;
+  cursor: pointer;
+  box-sizing: border-box;
+  opacity: .6;
+  min-width: 160px;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  vertical-align: top;
+  text-decoration: none;
+  text-transform: capitalize;
+  position: relative;
+  overflow: hidden;
+}
+
+.portal-analytics-panel {
+  padding: 24px;
+  height: 300px;
+}
+
+// Table widgets
+.portal-table-widget {
+  max-width: 100%;
+  overflow: auto;
+}
+.portal-table-widget--thumbnail {
+  width: 24px;
+  border-radius: 4px;
+}
+
+// Sessions Chart
+.portal-tab-sessions-chart {
+  padding: 24px;
+  position: relative;
+  height: 200px;
+}
+
+.portal-sessions-flex {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  max-height: 100%;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.portal-sessions-flex__item {
+  flex: 1 1 100%;
+}
+
+.portal-table-tab-panel.portal-table-tab-panel--active {
+  display: table;
+}
+.portal-table-tab-panel {
+  display: none;
+}
+

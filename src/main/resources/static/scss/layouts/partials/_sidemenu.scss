@@ -1,0 +1,84 @@
+// List
+.portal-navigation-list {
+  color: inherit;
+}
+
+.portal-navigation__subheader {
+  color: inherit;
+}
+
+.portal-navigation-list__icon {
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  margin-right: 16px;
+  .portal-navigation-list & {
+    color: inherit;
+    opacity: .75;
+  }
+  @include mdc-rtl {
+    margin-right: 0;
+    margin-left: 16px;
+  }
+  .portal-navigation-list__text & {
+    height: 24px;
+    width: 24px;
+  }
+}
+// Rtl change icon
+.portal-sidenav-collapse-icon {
+  @include mdc-rtl {
+    transform: rotate(180deg);
+  }
+}
+
+// Collapse Icon
+.portal-navigation-list__icon-collapse {
+  font-size: 16px;
+  line-height: 24px;
+  width: 24px;
+  text-align: center;
+  transition: transform .3s;
+  .portal-navigation-list__item--open & {
+    transform: rotate(180deg);
+  }
+}
+
+// List Text
+.portal-navigation-list__text {
+  display: flex;
+  align-items: center;
+  flex: 1 1 100%;
+}
+
+// Nested Lists
+.portal-navigation-list {
+  .portal-navigation-list {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 1s;
+    background: darken($portal-sidenav-fill-color, 5%);
+    box-shadow: 0px 2px 4px rgba(0,0,0,.05) inset, 0px -2px 4px rgba(0,0,0,.05) inset;
+    .mdc-list-item {
+      opacity: 0;
+      text-indent: 1em;
+      transition: opacity .3s $mdc-animation-standard-curve-timing-function, text-indent .3s $mdc-animation-standard-curve-timing-function;
+      @for $i from 0 to 15 {
+        &:nth-child(#{$i}) {
+          transition-delay: $i * .1s;
+        }
+      }
+    }
+  }
+  .portal-navigation-list__item--open + & {
+    max-height: 1000px;
+    .mdc-list-item {
+      opacity: 1;
+      text-indent: 0;
+    }
+  }
+  .portal-navigation--light & .portal-navigation-list {
+    background: darken($portal-sidenav-fill-color-light, 2%);
+  }
+}
+

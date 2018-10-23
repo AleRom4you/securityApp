@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portal, Material Design HTML Template</title>
+    <base href="{{ base }}">
+    <!-- load fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Barlow:100,300,400,400i,500,700,900" rel="stylesheet">
+    <!-- Portal Styles -->
+    <link rel="stylesheet" href="{{ base }}assets/css/classic-light_blue-pink.css">
+    <!-- page specific CSS -->
+    {% block styles %}{% endblock %}
+  </head>
+
+  <body class="mdc-typography">
+
+    <div class="portal-wrapper">
+
+      <main class="portal-main">
+
+        <div class="portal-main__content mdc-theme--text-primary-on-light mdc-theme--secondary-bg-gradient portal-no-layout-container">
+          {% block content %}{% endblock %}
+        </div>
+
+      </main>
+
+    </div>
+
+    <!-- initialise material components js -->
+    <script src="{{ base }}assets/js/material-components-web.js"></script>
+    <script>mdc.autoInit()</script>
+
+    <!-- page specific JS -->
+    {% block scripts %}{% endblock %}
+
+  </body>
+</html>

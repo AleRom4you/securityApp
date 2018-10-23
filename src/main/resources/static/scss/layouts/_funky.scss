@@ -1,0 +1,27 @@
+// Side Navigation Width Override
+.mdc-drawer--portal-subnav {
+  @include mdc-layout-grid-media-query_(desktop) {
+    z-index: -1;
+  }
+  &.mdc-drawer--open {
+    .mdc-drawer__drawer {
+      @include mdc-layout-grid-media-query_(desktop) {
+        transform: translateX($mdc-persistent-drawer-width-compact);
+        @include mdc-rtl {
+          transform: translateX(-$mdc-persistent-drawer-width-compact);
+        }
+      }
+    }
+  }
+  .mdc-toolbar__title {
+    margin-left: 16px;
+    @include mdc-rtl {
+      margin-left: 0px;
+      margin-right: 12px;
+    }
+  }
+}
+// Hide menu icon by default
+.portal-burger-menu-icon--funky {
+  display: none;
+}
