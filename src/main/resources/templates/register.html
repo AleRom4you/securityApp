@@ -1,105 +1,145 @@
-{% set active_page = 'Register' -%}
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 
-{% extends "layouts/no-layout.html" %}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- Favicon icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="../static/assets/images/favicon.png">
+  <title>Sign Up</title>
+  <!-- Custom CSS -->
+  <link href="../static/dist/css/style.min.css" th:href="@{/dist/css/style.css}" rel="stylesheet" />
+  <link rel="stylesheet" href="/webjars/font-awesome/4.7.0/css/font-awesome.min.css" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}"/>
+  <!-- GoogleReCaptcha -->
+  <script src="https://www.google.com/recaptcha/api.js" th:src="@{https://www.google.com/recaptcha/api.js}"></script>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" th:src="@{https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js}"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" th:src="@{https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js}"></script>
+<![endif]-->
+</head>
 
-{% block content %}
-  <div class="mdc-layout-grid mdc-layout-grid--fullheight">
-    <div class="mdc-layout-grid__inner">
-      <div class="mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-1-tablet mdc-layout-grid__cell--span-4-phone"></div>
-      <div class="mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-4-phone">
-        <div class="mdc-card portal-card portal-card--hero portal-card--horizontal  mdc-elevation--z24">
-          <div class="mdc-layout-grid">
-            <div class="mdc-layout-grid__inner">
-              <div class="mdc-layout-grid__cell--span-6">
-                <div class="mdc-theme--primary-bg mdc-theme--text-primary-on-secondary portal-card__content portal-card__content--column">
-                  <section class="portal-text-center">
-                    <div class="portal-card__title portal-card__title--vertical">
-                      <img class="portal-card__logo" src="{{ base }}assets/images/portal-logo.png" alt="logo">
-                      <h1 class="portal-card--headline">Register</h1>
-                    </div>
-                    <p class="mdc-typography--body1">It takes a couple of minutes to sign up for a free account. Just fill in your details to gain access the admin panel and view the dashboard. By creating an account, you agree to our Terms & Conditions and Privacy Policy.</p>
-                  </section>
-                  <div class="portal-card__content--column-actions">
-                    <button class="mdc-button mdc-button--raised mdc-theme--secondary-bg mdc-theme--text-primary-on-secondary" data-mdc-auto-init="MDCRipple">
-                      I already have an account.
-                    </button>
+<body>
+<div class="main-wrapper">
+  <!-- ============================================================== -->
+  <!-- Preloader - style you can find in spinners.css -->
+  <!-- ============================================================== -->
+  <div class="preloader">
+    <div class="lds-ripple">
+      <div class="lds-pos"></div>
+      <div class="lds-pos"></div>
+    </div>
+  </div>
+  <!-- ============================================================== -->
+  <!-- Preloader - style you can find in spinners.css -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- Login box.scss -->
+  <!-- ============================================================== -->
+  <div class="auth-wrapper d-flex no-block justify-content-center lign-items-center" style="background:url(../../assets/images/big/auth-bg.jpg) no-repeat center center;">
+    <div class="auth-box">
+      <div>
+        <div class="logo">
+          <span class="db"><img src="../../assets/images/logo-icon.png" alt="logo" /></span>
+          <h5 class="font-medium m-b-20">Sign Up to Chats</h5>
+        </div>
+        <!-- Form -->
+        <div class="row">
+          <div class="col-12">
+              <!-- Alert with different color -->
+              <div th:if="${success}">
+                  <div class="alert alert-success" th:text="${success}">This is an example top alert. You can edit what u wish.
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                  </div>
+              </div>
+              <!-- Alert with different color -->
+              <div th:if="${error}">
+                  <div class="alert alert-danger" th:text="${error}">This is an example top alert. You can edit what u wish.
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                  </div>
+              </div>
+            <form class="form-horizontal m-t-20" method="post" action="/signup">
+              <div class="form-group row ">
+                <div class="col-12 ">
+                  <input class="form-control form-control-lg" type="text" required=" " name="login" id="login" placeholder="Login">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-12 ">
+                  <input class="form-control form-control-lg" type="text" required=" " name="name" id="name" placeholder="Name">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-12 ">
+                  <input class="form-control form-control-lg" type="password" required=" " name="password" id="password" placeholder="Password">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-12 ">
+                  <input class="form-control form-control-lg" type="password" required=" " name="re-password" id="re-password" placeholder="Confirm Password">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-12 ">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">I agree to all <a href="javascript:alert('Правила будут, ты главное галочку поставь!');">Terms</a></label>
                   </div>
                 </div>
               </div>
-              <div class="mdc-layout-grid__cell--span-6">
-                <div class="portal-card__content portal-card__content--column">
-                  <form>
-
-                    <div class="mdc-layout-grid">
-                      <div class="mdc-layout-grid__inner">
-                        <div class="mdc-layout-grid__cell--span-6">
-                          <div class="mdc-text-field mdc-text-field--dense mdc-text-field--fullwidth portal-text-field--fullwidth">
-                            <input type="text" class="mdc-text-field__input" id="portal-first-name">
-                            <label for="portal-first-name" class="mdc-floating-label">First Name</label>
-                            <div class="mdc-line-ripple"></div>
-                          </div>
-                        </div>
-                        <div class="mdc-layout-grid__cell--span-6">
-                          <div class="mdc-text-field mdc-text-field--dense mdc-text-field--fullwidth portal-text-field--fullwidth">
-                            <input type="text" class="mdc-text-field__input" id="portal-last-name">
-                            <label for="portal-last-name" class="mdc-floating-label">Last Name</label>
-                            <div class="mdc-line-ripple"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="mdc-layout-grid">
-                      <div class="mdc-layout-grid__inner">
-                        <div class="mdc-layout-grid__cell--span-12">
-                          <div class="mdc-text-field mdc-text-field--dense mdc-text-field--fullwidth portal-text-field--fullwidth">
-                            <input type="email" class="mdc-text-field__input" id="email">
-                            <label for="email" class="mdc-floating-label">Email Address</label>
-                            <div class="mdc-line-ripple"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="mdc-layout-grid">
-                      <div class="mdc-layout-grid__inner">
-                        <div class="mdc-layout-grid__cell--span-6">
-                          <div class="mdc-text-field mdc-text-field--dense mdc-text-field--fullwidth portal-text-field--fullwidth">
-                            <input pattern=".{8,}" type="password" class="mdc-text-field__input" id="pw" autocomplete="current-password">
-                            <label for="pw" class="mdc-floating-label">Password</label>
-                            <div class="mdc-line-ripple"></div>
-                          </div>
-                        </div>
-                        <div class="mdc-layout-grid__cell--span-6">
-                          <div class="mdc-text-field mdc-text-field--dense mdc-text-field--fullwidth portal-text-field--fullwidth">
-                            <input pattern=".{8,}" type="password" class="mdc-text-field__input" id="repeat-pw" autocomplete="current-password">
-                            <label for="repeat-pw" class="mdc-floating-label">Repeat Password</label>
-                            <div class="mdc-line-ripple"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                  <div class="portal-card__content--column-actions">
-                    <button disabled class="mdc-button mdc-button--raised mdc-button--portal-login">Register</button>
-                  </div>
+              <div class="g-recaptcha" style="margin: 10px 30px;" data-sitekey="6LcQpnIUAAAAAI5Jgyc9qCGer06CrW1_TuW0wSv_"></div>
+              <div class="form-group text-center">
+                <div class="col-xs-12 p-b-20 ">
+                  <button class="btn btn-block btn-lg btn-info " type="submit">SIGN UP</button>
                 </div>
               </div>
-            </div>
+              <div class="form-group m-b-0 m-t-10 ">
+                <div class="col-sm-12 text-center ">
+                  Already have an account? <a href="/login" class="text-info m-l-5 "><b>Sign In</b></a>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-{% endblock %}
-
-{% block scripts %}
+  <!-- ============================================================== -->
+  <!-- Login box.scss -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- Page wrapper scss in scafholding.scss -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- Page wrapper scss in scafholding.scss -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- Right Sidebar -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- Right Sidebar -->
+  <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- All Required js -->
+<!-- ============================================================== -->
+<script type="text/javascript" th:src="@{/assets/libs/jquery/dist/jquery.min.js}" src="../assets/libs/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script type="text/javascript" th:src="@{/assets/libs/popper.js/dist/umd/popper.min.js}" src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script type="text/javascript" th:src="@{/assets/libs/bootstrap/dist/js/bootstrap.min.js}" src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- ============================================================== -->
+<!-- This page plugin js -->
+<!-- ============================================================== -->
+<!--<script type="text/javascript" th:src="@{/dist/js/pages/page.register.js}" src="../dist/js/pages/page.register.js"></script>-->
 <script>
-  (function() {
-    const tfRoot = document.querySelectorAll('.mdc-text-field');
-    for (let i = 0; i < tfRoot.length; i++) {
-      new mdc.textField.MDCTextField(tfRoot[i]);
-    }
-  })();
+    $('[data-toggle="tooltip "]').tooltip();
+    $(".preloader ").fadeOut();
 </script>
-{% endblock %}
+</body>
+
+</html>

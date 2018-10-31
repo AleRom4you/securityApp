@@ -1,16 +1,23 @@
 package by.alerom.securityApp.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class User {
+public class User implements Serializable {
     private int id;
     private String login;
     private String password;
     private String name;
     private Timestamp created_at;
     private Timestamp updated_at;
+    private Role role;
 
     public User() {
+    }
+
+    public User(String login, String password) {
+        this.login = login;
+        this.password = password;
     }
 
     public User(String login, String password, String name) {
@@ -76,6 +83,14 @@ public class User {
         this.updated_at = updated_at;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -84,6 +99,7 @@ public class User {
                 ", name='" + name + '\'' +
                 ", created_at=" + created_at +
                 ", updated_at=" + updated_at +
+                ", role=" + role +
                 '}';
     }
 }

@@ -1,9 +1,16 @@
 package by.alerom.securityApp.model;
 
+import by.alerom.securityApp.config.Config;
+import by.alerom.securityApp.rsa.Encryption;
+
+import java.io.Serializable;
+import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.sql.Timestamp;
 
-public class Message {
+public class Message implements Serializable {
     private int id;
+    private int chatId;
     private int userId;
     private String userName;
     private String message;
@@ -13,10 +20,35 @@ public class Message {
     public Message() {
     }
 
-    public Message(int userId, String userName, String message) {
+    public Message(int id, String message) {
+        this.id = id;
+        this.message = message;
+    }
+
+    public Message(int chatId, int userId, String userName, String message) {
+        this.chatId = chatId;
         this.userId = userId;
         this.userName = userName;
         this.message = message;
+    }
+
+    public Message(int id, int userId, String userName, String message, Timestamp created_at, Timestamp updated_at) {
+        this.id = id;
+        this.userId = userId;
+        this.userName = userName;
+        this.message = decodeMessage(message);
+        this.created_at = created_at;
+        this.updated_at = updated_at;
+    }
+
+    public Message(int id, int chatId, int userId, String userName, String message, Timestamp created_at, Timestamp updated_at) {
+        this.id = id;
+        this.chatId = chatId;
+        this.userId = userId;
+        this.userName = userName;
+        this.message = decodeMessage(message);
+        this.created_at = created_at;
+        this.updated_at = updated_at;
     }
 
     public int getId() {
@@ -25,6 +57,14 @@ public class Message {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getChatId() {
+        return chatId;
+    }
+
+    public void setChatId(int chatId) {
+        this.chatId = chatId;
     }
 
     public int getUserId() {
@@ -65,6 +105,34 @@ public class Message {
 
     public void setUpdated_at(Timestamp updated_at) {
         this.updated_at = updated_at;
+    }
+
+    public String decodeMessage(String message) {
+        Encryption ac = null;
+        try {
+            ac = new Encryption();
+            PublicKey publicKey = ac.getPublic(Config.publicKeyFile);
+
+            return ac.decryptText(message, publicKey);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return message;
+    }
+
+    public String encodeMessage(String message) {
+        Encryption ac = null;
+        try {
+            ac = new Encryption();
+            PrivateKey privateKey = ac.getPrivate(Config.privateKeyFile);
+
+            return ac.encryptText(message, privateKey);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return message;
     }
 
     @Override

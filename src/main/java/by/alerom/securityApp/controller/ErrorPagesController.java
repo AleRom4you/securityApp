@@ -19,10 +19,13 @@ public class ErrorPagesController implements ErrorController {
             Integer statusCode = Integer.valueOf(status.toString());
 
             if(statusCode == HttpStatus.NOT_FOUND.value()) {
-                return "404";
+                return "error-404";
             }
             else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-                return "500";
+                return "error-500";
+            }
+            else if(statusCode == HttpStatus.BAD_REQUEST.value()) {
+                return "error-400";
             }
         }
         return "error";

@@ -1,8 +1,9 @@
 package by.alerom.securityApp.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Role {
+public class Role implements Serializable {
     private int id;
     private String name;
     private String description;
@@ -15,6 +16,14 @@ public class Role {
     public Role(String name, String description) {
         this.name = name;
         this.description = description;
+    }
+
+    public Role(int id, String name, String description, Timestamp created_at, Timestamp updated_at) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
     }
 
     public int getId() {
